@@ -44,7 +44,7 @@ ORDER BY TotalDeathCount desc;
 
 
 -- Global Numbers
-select SUM(new_cases) as total_cases, sum(cast(new_deaths as int)) as total_deaths, sum(cast(new_deaths as int))/sum(New_cases)*100 as death_percentage
+select SUM(new_cases) as total_cases, sum(cast(new_deaths as int)) as total_deaths, sum(cast(new_deaths as int))/nullif(sum(New_cases),0)*100 as death_percentage
 from PortfolioProject..CovidDeaths
 --where location like '%ecua%'
 where continent is not null
